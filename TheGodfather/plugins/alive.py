@@ -74,25 +74,43 @@ async def alive(app: Client, m):
         await app.send_photo(m.chat.id, photo, caption=reply_msg)
 
 
+start = time.time()
+end = time.time()
+ping = round((end - start) * 1000, 3)
+uptime = get_readable_time((time.time() - StartTime))
+
+if ping <= 100:
+    pingx = "🎒 sᴍᴏᴏᴛʜ ᴀғ ~"
+if ping <= 200:
+    pingx = '🎒 ғɪɴᴇ ᴀғ ~'
+if ping <= 300:
+    pingx = '🎒 ᴀᴠᴇʀᴀɢᴇ ᴀғ ~'
+if ping <= 400:
+    pingx = '🎒 sʟᴏᴡ ᴀғ ~' 
+if ping >= 500:
+    pingx = '⚠ ᴄʜᴇᴄᴋ ʏᴏᴜ ɴᴇᴛᴡᴏʀᴋ ᴄᴏɴɴᴇᴄᴛɪᴏɴ'
+
 @Client.on_message(filters.command("ping", PREFIX) & filters.me)
-async def pingme(app: Client, message: Message):
-    start = datetime.now()
-    end = datetime.now()
-    start_time = time.time()
-    uptime = get_readable_time((time.time() - StartTime))
-    end_time = time.time()
-    m_s = (end - start).microseconds / 1000
-    photo = "https://telegra.ph/file/ceb9430fcb275c4f2a0d3.jpg"
-    await message.delete()
-    if message.reply_to_message:
-        await app.send_photo(
-            message.chat.id,
-            photo,
-            caption=f"**◦•●◉✿ ᴘᴏɴɢ ✿◉●•◦**\nᴛɪᴍᴇ ᴛᴀᴋᴇɴ:`{m_s} ms`\nꜱᴇʀᴠɪᴄᴇ ᴜᴘᴛɪᴍᴇ: {uptime}",
-            reply_to_message_id=message.reply_to_message.message_id,
-        )
-    else:
-        await app.send_photo(message.chat.id, photo, caption=f"**◦•●◉✿ ᴘᴏɴɢ ✿◉●•◦**\nᴛɪᴍᴇ ᴛᴀᴋᴇɴ:`{m_s} ms`\nꜱᴇʀᴠɪᴄᴇ ᴜᴘᴛɪᴍᴇ: {uptime}")
+async def alive(app: Client, m):
+    await m.delete()
+    asyncio.sleep(0.5)
+    await m.send_photo(
+        m.chat.id,
+        photo = "https://telegra.ph/file/2c564b0cd45f8e39ef7e2.jpg",
+        caption = f"""
+ᴘᴏɴɢ 🍁
+
+ᴛɪᴍᴇ ᴛᴏᴏᴋ : `{ping}`
+
+ᴜᴘᴛɪᴍᴇ : `{uptime}`
+
+ᴄᴏɴᴅɪᴛɪᴏɴ : **{pingx}**
+
+ᴘʏʀᴏ ᴠᴇʀsɪᴏɴ : `{p}`
+
+ɢᴏᴅғᴀᴛʜᴇʀ ᴠᴇʀsɪᴏɴ : `{__meta__}`
+"""
+    )
 
 
 __MODULE__ = "Alive"
