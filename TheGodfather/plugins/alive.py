@@ -93,7 +93,6 @@ if ping >= 500:
 @Client.on_message(filters.command("ping", PREFIX) & filters.me)
 async def alive(app: Client, m):
     await m.delete()
-    asyncio.sleep(0.5)
     await m.send_photo(
         m.chat.id,
         photo = "https://telegra.ph/file/2c564b0cd45f8e39ef7e2.jpg",
@@ -108,7 +107,7 @@ async def alive(app: Client, m):
 
 ᴘʏʀᴏ ᴠᴇʀsɪᴏɴ : `{p}`
 
-ɢᴏᴅғᴀᴛʜᴇʀ ᴠᴇʀsɪᴏɴ : `{__meta__}`
+ɢᴏᴅғᴀᴛʜᴇʀ ᴠᴇʀsɪᴏɴ : `0.2.3`
 """
     )
 
