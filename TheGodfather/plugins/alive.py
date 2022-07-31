@@ -74,44 +74,6 @@ async def alive(app: Client, m):
         await app.send_photo(m.chat.id, photo, caption=reply_msg)
 
 
-start = time.time()
-end = time.time()
-ping = round((end - start) * 1000, 3)
-uptime = get_readable_time((time.time() - StartTime))
-
-if ping <= 100:
-    pingx = "🎒 sᴍᴏᴏᴛʜ ᴀғ ~"
-if ping <= 200:
-    pingx = '🎒 ғɪɴᴇ ᴀғ ~'
-if ping <= 300:
-    pingx = '🎒 ᴀᴠᴇʀᴀɢᴇ ᴀғ ~'
-if ping <= 400:
-    pingx = '🎒 sʟᴏᴡ ᴀғ ~' 
-if ping >= 500:
-    pingx = '⚠ ᴄʜᴇᴄᴋ ʏᴏᴜ ɴᴇᴛᴡᴏʀᴋ ᴄᴏɴɴᴇᴄᴛɪᴏɴ'
-
-@Client.on_message(filters.command("ping", PREFIX) & filters.me)
-async def alive(app: Client, m):
-    await m.delete()
-    await m.send_photo(
-        m.chat.id,
-        photo = "https://telegra.ph/file/2c564b0cd45f8e39ef7e2.jpg",
-        caption = f"""
-ᴘᴏɴɢ 🍁
-
-ᴛɪᴍᴇ ᴛᴏᴏᴋ : `{ping}`
-
-ᴜᴘᴛɪᴍᴇ : `{uptime}`
-
-ᴄᴏɴᴅɪᴛɪᴏɴ : **{pingx}**
-
-ᴘʏʀᴏ ᴠᴇʀsɪᴏɴ : `{p}`
-
-ɢᴏᴅғᴀᴛʜᴇʀ ᴠᴇʀsɪᴏɴ : `0.2.3`
-"""
-    )
-
-
 __MODULE__ = "Alive"
 __HELP__ = f"""
 **📂 To Check Alive Message.**
